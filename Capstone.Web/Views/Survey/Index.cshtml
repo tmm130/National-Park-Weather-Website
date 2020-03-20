@@ -1,0 +1,63 @@
+﻿@model Survey
+
+@{
+    ViewData["Title"] = "Survey";
+}
+
+<form asp-controller="Survey" asp-action="Index" method="POST">
+    <div class="form">
+        <div class="label">
+            <label asp-for="ParkCode"></label>
+        </div>
+        <div class="input">
+            <select asp-for="ParkCode" asp-items="Survey.ParkNames"></select>
+        </div>
+        <div class="error">
+            <span asp-validation-for="ParkCode"></span>
+        </div>
+    </div>
+
+    <div class="form">
+        <div class="label">
+            <label asp-for="Email"></label>
+        </div>
+        <div class="input">
+            <input id="email" asp-for="Email" placeholder="user@domain.com" />
+        </div>
+        <div class="error">
+            <span asp-validation-for="Email"></span>
+        </div>
+    </div>
+
+    <div class="form">
+        <div class="label">
+            <label asp-for="State"></label>
+        </div>
+        <div class="input">
+            <select asp-for="State" asp-items="Survey.States"></select>
+        </div>
+        <div class="error">
+            <span asp-validation-for="State"></span>
+        </div>
+    </div>
+
+    <div class="form">
+        <div class="label">
+            <label asp-for="ActivityLevel"></label>
+        </div>
+        <div class="input">
+            @foreach (string level in Survey.ActivityLevels)
+            {
+                @Html.RadioButtonFor(model => model.ActivityLevel, level) @level
+                <br />
+            }
+        </div>
+        <div class="error">
+            <span asp-validation-for="ActivityLevel"></span>
+        </div>
+    </div>
+
+    <div class="form">
+        <input type="submit" value="Submit" />
+    </div>
+</form>

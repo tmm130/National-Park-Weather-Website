@@ -1,0 +1,270 @@
+﻿body {
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    grid-template-areas: ". header ." ". nav ." ". main ." ". footer .";
+    margin: 0;
+    background-color: #1E392A;
+    color: #111;
+    font-family: Didact Gothic;
+    font-size: 2.5vmin;
+}
+
+    body > * {
+        border: 1px solid #EEE;
+        border-top: 0;
+        border-bottom: 0;
+    }
+
+#background {
+    position: fixed;
+    z-index: -1;
+    width: 100vw;
+    height: 100vh;
+    filter: grayscale(100%);
+    opacity: 0.5;
+}
+
+header img {
+    filter: sepia(100%) hue-rotate(90deg) contrast(180%);
+}
+
+header {
+    grid-area: header;
+    background-color: rgba(60, 196, 124, 0.15);
+}
+
+nav {
+    grid-area: nav;
+    padding: 1vmin;
+    background-color: rgba(5, 102, 68, 0.75);
+    color: #1E392A;
+    font-weight: bold;
+    font-size: 4vmin;
+    text-align: center;
+}
+
+main {
+    grid-area: main;
+    background-color: rgba(238, 238, 238, 0.75);
+    padding: 50px 0;
+}
+
+footer {
+    grid-area: footer;
+    padding: 1vmin;
+    text-align: center;
+    background-color: rgba(5, 102, 68, 0.75);
+    color: #EEE;
+    font-weight: bold;
+    font-size: 3vmin;
+}
+
+header img {
+    width: 60%;
+}
+
+.parks {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+    .parks div {
+        width: 40%;
+        padding: 0 0 50px 0;
+    }
+
+    .parks img {
+        width: 100%;
+        border: 1px solid #EEE;
+        border-radius: 12px;
+        box-shadow: 5px 10px 18px #666;
+        filter: saturate(50%);
+        transition: transform 0.4s;
+    }
+
+        .parks img:hover {
+            filter: saturate(100%);
+            transform: scale(1.2);
+        }
+
+.detail {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+    .detail div {
+        width: 40%;
+        padding: 0 0 3vmin 0;
+    }
+
+    .detail img {
+        width: 100%;
+        border: 1px solid #EEE;
+        border-radius: 12px;
+        box-shadow: 5px 10px 18px #666;
+    }
+
+table {
+    width: 100%;
+}
+
+.stripe {
+    background-color: rgba(17, 17, 17, 0.1);
+    border-radius: 6px;
+}
+
+td {
+    text-align: center;
+}
+
+th, td {
+    width: 50%;
+}
+
+.weather {
+   display: flex;
+   justify-content: space-evenly;
+}
+
+.weather div {
+    text-align: center;
+    width: 15%;
+}
+
+    .weather div:first-child h5 {
+        background-color: rgba(5, 102, 68, 0.75);
+        color: #EEE;
+    }
+
+    .weather img {
+        border-radius: 50%;
+        border: 1px solid #111;
+        box-shadow: 5px 10px 18px #666;
+        width: 15vmin;
+        height: 15vmin;
+        margin: 2.5vmin;
+    }
+
+.form {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0 0 4vmin 0;
+    font-weight: bold;
+}
+
+.label {
+    width: 15%;
+    text-align: right;
+}
+
+.input {
+    width: 30%;
+}
+
+.error {
+    width: 40%;
+    color: #C0504D;
+}
+
+select, input, button {
+    font-family: Didact Gothic;
+    font-weight: bold;
+    font-size: 2.5vmin;
+    background-color: #EEE;
+    border: 1px solid #666;
+    border-radius: 3px;
+}
+
+option {
+    background-color: #EEE;
+}
+
+select {
+    width: 100%;
+}
+
+#email {
+    width: calc(100% - 2px);
+}
+
+input[type=submit]:hover, button:hover {
+    background-color: #3CC47C;
+    color: #EEE;
+}
+
+.survey-result {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+    .survey-result img {
+        width: 35%;
+        border: 1px solid #EEE;
+        border-radius: 12px;
+        box-shadow: 5px 10px 18px #666;
+        filter: saturate(50%);
+        transition: transform 0.4s;
+    }
+
+.mini {
+    width: 35%;
+    text-align: right;
+}
+
+.rank {
+    width: 10%;
+    text-align: center;
+    font-size: 5vmin;
+    color: #111;
+    font-weight: bold;
+}
+
+.name {
+    width: 45%;
+}
+
+h1 {
+    margin: 0;
+    color: #056644;
+    font-size: 3vmin;
+}
+
+h2 {
+    margin: 0;
+    color: #333;
+    font-size: 2vmin;
+}
+
+h3 {
+    text-align: justify;
+    font-weight: normal;
+    font-style: italic;
+    font-size: 3vmin;
+}
+
+h4 {
+    text-align: right;
+}
+
+h5 {
+    margin: 0;
+    font-size: 2.5vmin;
+    font-weight: bold;
+}
+
+p {
+    text-align: justify;
+}
+
+a:link, a:visited, a:active {
+    color: #EEE;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #3CC47C;
+    border-top: 2px solid #EEE;
+    border-bottom: 2px solid #EEE;
+}

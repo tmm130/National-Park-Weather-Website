@@ -1,0 +1,34 @@
+﻿@model IList<SurveyResult>
+
+@{
+    ViewData["Title"] = "Results";
+    int rank = 1;
+}
+
+<div style="text-align: center; margin-bottom: 3vmin;">
+    <h5>SURVEY POWER RANKINGS</h5>
+</div>
+
+@foreach (SurveyResult result in Model)
+{
+    string imagePath = "/images/parks/" + result.ParkCode + ".jpg";
+
+    <div class="survey-result">
+
+        <div class="mini">
+            <img src="@imagePath" />
+        </div>
+
+        <div class="rank">
+            #@rank
+        </div>
+
+        <div class="name">
+            <h1>@result.Name.ToUpper()</h1>
+            <h2>(@result.Count votes)</h2>
+        </div>
+
+    </div>
+
+    rank++;
+}

@@ -1,0 +1,121 @@
+﻿@model WeatherParkViewModel
+
+
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div class="detail">
+    @{
+        string parkPath = "/images/parks/" + Model.Park.ParkCode + ".jpg";
+    }
+
+    <div>
+        <img src="@parkPath" />
+
+        <h3>"@Model.Park.InspirationalQuote"</h3>
+        <h4>- @Model.Park.InspirationalQuoteSource</h4>
+    </div>
+
+    <div>
+        <h1>@Model.Park.ParkName.ToUpper()</h1>
+        <h2>@Model.Park.State.ToUpper()</h2>
+        <p>@Model.Park.ParkDescription</p>
+
+        <table>
+            <tr>
+                <th>Acreage</th>
+                <td>@Model.Park.Acreage.ToString("N0") acres</td>
+            </tr>
+            <tr class="stripe">
+                <th>Elevation</th>
+                <td>@Model.Park.ElevationInFeet.ToString("N0")  feet</td>
+            </tr>
+            <tr>
+                <th>Trail</th>
+                <td>@Model.Park.MilesOfTrail.ToString("N0")  miles</td>
+            </tr>
+            <tr class="stripe">
+                <th>Campsites</th>
+                <td>@Model.Park.NumberOfCampsites</td>
+            </tr>
+            <tr>
+                <th>Climate</th>
+                <td>@Model.Park.Climate</td>
+            </tr>
+            <tr class="stripe">
+                <th>Year Founded</th>
+                <td>@Model.Park.YearFounded</td>
+            </tr>
+            <tr>
+                <th>Annual Visitors</th>
+                <td>@Model.Park.AnnualVisitorCount.ToString("N0")</td>
+            </tr>
+            <tr class="stripe">
+                <th>Animal Species</th>
+                <td>@Model.Park.NumberOfAnimalSpecies.ToString("N0")</td>
+            </tr>
+            <tr>
+                <th>Entry Fee</th>
+                <td>$@(Model.Park.EntryFee).00</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div style="text-align: center; margin-bottom: 3vmin;">
+    <h1>5-Day Forecast</h1>
+    <form method="post">
+        <button name="unitButton" value="F" asp-action="Detail">°F</button>
+        <button name="unitButton" value="C" asp-action="Detail">°C</button>
+    </form>
+</div>
+
+<div class="weather">
+
+    @{
+        int day = 1;
+
+        foreach (WeatherModel weather in Model.Weathers)
+        {
+            string imagePath = "/images/weather/" + Model.FindCorrectPictureForWeather(weather.ForeCast);
+            string dayString = "Today";
+            int highF = weather.HighTemp;
+            int lowF = weather.LowTemp;
+            int high = weather.HighTemp;
+            int low = weather.LowTemp;
+
+            if (Model.Scale == "C")
+            {
+                high = weather.HighTempCelsius;
+                low = weather.LowTempCelsius;
+            }
+
+            if (day > 1)
+            {
+                dayString = @Model.FindDayOfWeekForWeather(DateTime.Now, weather.FiveDayForecastValue);
+            }
+            <div>
+                <h5 class="stripe">@dayString.ToUpper()</h5>
+                <img src="@imagePath">
+                <table>
+                    <tr>
+                        <th>HIGH</th>
+                        <td>@(high)°@Model.Scale</td>
+                    </tr>
+                    <tr>
+                        <th>LOW</th>
+                        <td>@(low)°@Model.Scale</td>
+                    </tr>
+                </table>
+                <br />
+                <h5 class="stripe">@weather.ForeCast.ToUpper()</h5>
+
+                <p>@(Model.GetWeatherHelper(weather.ForeCast, highF, lowF))</p>
+            </div>
+
+            day++;
+        }
+    }
+
+</div>
